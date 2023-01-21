@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useEffect} from 'react';
 import './App.css';
+import axios from 'axios';
+import { Container } from '@mui/material';
+import ListMovies from './components/ListMovies';
 
 function App() {
+
+  const getMovies = async () => {
+
+    try {
+      const resp = await axios.get('https://api.themoviedb.org/4/discover/movie?api_key=b8d60a1e14f700813284b0fbb0ac439b');
+    } catch(error) {
+
+    }
+
+  }
+
+  useEffect(()=>{getMovies();},[]);
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <div>
+        <h1 className='title' style={{textAlign:'center'}}>Películas Challenge Farmu</h1>
+        <ListMovies></ListMovies>
+      </div>
+    </Container>
   );
 }
 
