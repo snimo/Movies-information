@@ -20,8 +20,6 @@ function ListMovies() {
 
         setLoading(true);
 
-        if (loading) return;
-
         ApiListMovies(lastPage).then((data)=>{
             const moviesResponseApi : MoviesResponseApi = data;
             setMovieList(movieList.concat(moviesResponseApi.results));
