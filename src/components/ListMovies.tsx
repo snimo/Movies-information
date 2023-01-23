@@ -94,12 +94,15 @@ function ListMovies() {
         loadMoviesList()
       }, []);
 
-    window.onscroll = () => {
+    useEffect(() => {
+        window.onscroll = () => {
 
-        if ((Math.abs((window.innerHeight + document.documentElement.scrollTop) - document.documentElement.offsetHeight))<= 5) {
-           loadMoviesList();
-        }
-      }
+            if ((Math.abs((window.innerHeight + document.documentElement.scrollTop) - document.documentElement.offsetHeight))<= 5) {
+               loadMoviesList();
+            }
+          }
+          return () => {window.onscroll = null}
+    });  
 
     return (
         <div style={{textAlign:'center'}}>
